@@ -4,7 +4,7 @@ import (
 	"log"
 	"time"
 
-	"github.com/OmShirke/gRPC-Microservices/account"
+	account "github.com/OmShirke/gRPC-Microservice-Account"
 	"github.com/kelseyhightower/envconfig"
 	"github.com/tinrab/retry"
 )
