@@ -5,7 +5,7 @@ FROM golang:1.23-alpine AS build
 RUN apk --no-cache add gcc g++ make ca-certificates
 
 # Set the working directory inside the container
-WORKDIR /go/src/github.com/OmShirke/gRPC-Microservices
+WORKDIR /go/src/github.com/OmShirke/gRPC-Microservice-Account
 
 # Copy necessary files for dependency resolution and building
 COPY go.mod go.sum ./
