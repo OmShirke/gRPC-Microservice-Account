@@ -3,7 +3,6 @@ module github.com/OmShirke/gRPC-Microservice-Account
 go 1.23.1
 
 require (
-	github.com/OmShirke/gRPC-Microservices v0.0.0-20241201072252-d00f20d573be
 	github.com/kelseyhightower/envconfig v1.4.0
 	github.com/lib/pq v1.10.9
 	github.com/segmentio/ksuid v1.0.4

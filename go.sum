@@ -1,5 +1,3 @@
-github.com/OmShirke/gRPC-Microservices v0.0.0-20241201072252-d00f20d573be h1:7CCAhL43l0AF+viv1Dshsdjr9u6iHy7QFocmbxiKKOg=
-github.com/OmShirke/gRPC-Microservices v0.0.0-20241201072252-d00f20d573be/go.mod h1:n5M852wyZ6eQn2f3aAWg912+AOGbI6L34I+bVmQURyE=
 github.com/golang/protobuf v1.5.4 h1:i7eJL8qZTpSEXOPTxNKhASYpMn+8e5Q6AdndVa1dWek=
 github.com/golang/protobuf v1.5.4/go.mod h1:lnTiLA8Wa4RWRcIUkrtSVa5nRhsEGBg48fD6rSs7xps=
 github.com/google/go-cmp v0.6.0 h1:ofyhxvXcZhMsU5ulbFiLKl/XBFqE1GSq7atu8tAmTRI=
