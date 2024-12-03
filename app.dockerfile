@@ -1,34 +1,39 @@
-# Build Stage
+# Use a Golang image for building the application
 FROM golang:1.23-alpine AS build
 
-# Install build dependencies
+# Install necessary dependencies
 RUN apk --no-cache add gcc g++ make ca-certificates
 
 # Set the working directory inside the container
-WORKDIR /go/src/github.com/OmShirke/gRPC-Microservice-Account
+WORKDIR /app
 
-# Copy necessary files for dependency resolution and building
-COPY go.mod go.sum ./
-RUN go mod download
+# Copy go.mod and go.sum
+COPY gRPC-Account-service/go.mod gRPC-Account-service/go.sum ./
 
-# Copy the vendor and service-specific files
-COPY vendor vendor
-COPY account account
+# Download the Go modules dependencies (optional, but useful for syncing)
+RUN GO111MODULE=on go mod download
 
-# Build the Go application
-RUN GO111MODULE=on go build -mod vendor -o /go/bin/app ./account/cmd/account
+# Ensure the dependencies are in sync
+RUN GO111MODULE=on go mod tidy
 
-# Runtime Stage
+# Copy the source code
+COPY gRPC-Account-service/ ./
+
+# Build the application binary
+RUN go build -o /app/bin/account ./cmd/account
+
+# Final stage: create a smaller image to run the application
 FROM alpine:3.11
 
-# Set the working directory
+# Set the working directory inside the container
 WORKDIR /usr/bin
 
-# Copy the built binary from the build stage
-COPY --from=build /go/bin/ .
+# Copy the compiled binary from the build stage
+COPY --from=build /app/bin/account .
 
-# Expose the service port
+# Expose the port your application runs on
 EXPOSE 8080
 
-# Define the startup command
-CMD ["app"]
+# Command to run the application
+CMD ["./account"]
+
