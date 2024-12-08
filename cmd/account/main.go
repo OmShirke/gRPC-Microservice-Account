@@ -21,7 +21,7 @@ func main() {
 	}
 
 	var r account.Repo
-	retry.ForeverSleep(2*time.Second, func(_ int) (err error) {
+	retry.ForeverSleep(2*time.Second, func(_ int) (err error) { //attempt to initialize the database repository every 2 seconds until successful
 		r, err = account.NewPostgresRepo(cfg.DatabaseURL)
 		if err != nil {
 			log.Println(err)
